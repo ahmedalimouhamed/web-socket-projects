@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;   
+        }
+
+        #notifications{
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 250px;
+            overflow-y: auto
+        }
+
+        .notif{
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Notifications en temps réel</h2>
+    <div id="notifications"></div>
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8081");
+        const notificationsDiv = document.getElementById("notifications");
+
+        socket.onmessage = event => {
+            const data = JSON.parse(event.data);
+
+            if(data.type === "notification" || data.type === "welcome"){
+                const el = document.createElement("div");
+                el.className = "notif";
+                el.textContent = data.message;
+                notificationsDiv.appendChild(el);
+
+                notificationsDiv.scrollTop = notificationsDiv.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
