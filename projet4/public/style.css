@@ -1,0 +1,15 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    text-align: center;
+    padding: 20px;
+}
+
+#dashboard{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Surveillance Domestique</h1>
+
+    <div id="dashboard">
+        <p>Température : <span id="temp">--</span>°C</p>
+        <p>Porte : <span id="door">--</span></p>
+        <p>Mouvement : <span id="motion">--</span></p>
+        <p>Dernière mise à jour : <span id="time">--</span></p>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
