@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Tableau de Bord de surveillance</h1>
+
+    <div id="loginForm">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="dashboard" style="display: none;">
+        <div class="dashboard">
+            <div class="card">
+                <h3>Température</h3>
+                <p id="temperature">-- °C</p>
+            </div>
+
+            <div class="card">
+                <h3>Mouvement</h3>
+                <p id="motion">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Portes</h3>
+                <p id="door">--</p>
+            </div>
+        </div>
+
+        <div>
+            <h2>Alertes</h2>
+            <div id="alerts"></div>
+        </div>
+
+        <div>
+            <h2>Historique</h2>
+            <select id="sensorType">
+                <option value="temperature">Température</option>
+                <option value="motion">Mouvement</option>
+                <option value="door">Portes</option>
+            </select>
+            <input type="datetime-local" id="startDate">
+            <input type="datetime-local" id="endDate">
+            <button onclick="getHistory()">Charger</button>
+            <div class="chart-container">
+                <canvas id="historyChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
